@@ -19,13 +19,19 @@ class MainContainer extends Component {
       }))
   }
 
-  handleClick = () => {
-    // if stock matches with the stockid that was clicked
-    // we get that stock and add it to the portfoliocontainer
-
+  handleClickPurchase = (id) => {
+    //check userstockid array to see if the stockID exists
+    // if it exists, add it to the state of userstocksid, if it doesn't exist ignore it.
+    if(!this.state.userStockIDs.includes(id)){
+      this.setState({
+        userStockIDs: [...this.state.userStockIDs, id]
+      })
+    }
   }
 
+  
   render() {
+    let portfolioData = this.state.userStockIDs.map(id => this.state.stockArray.find(stock => id == stock.id))
     return (
       <div>
         <SearchBar/>
@@ -35,13 +41,14 @@ class MainContainer extends Component {
 
               <StockContainer 
               stockArray={this.state.stockArray}
-              handleClick={this.handleClick}/>
+              handleClickPurchase={this.handleClickPurchase}/>
 
             </div>
             <div className="col-4">
 
               <PortfolioContainer 
-              userStockIDs={this.state.userStockIDs} />
+              userStockIDs={this.state.userStockIDs} portfolioData={portfolioData}
+              />
 
             </div>
           </div>

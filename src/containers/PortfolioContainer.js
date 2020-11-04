@@ -9,7 +9,10 @@ class PortfolioContainer extends Component {
     return (
       <div>
         <h2>My Portfolio</h2>
-        <Stock handleClick={this.props.handleClick}/>
+        {this.props.portfolioData.map(stock => 
+      <Stock key={stock.id} stock={stock}
+      />)}
+      
       </div>
     );
   }
@@ -17,3 +20,4 @@ class PortfolioContainer extends Component {
 }
 
 export default PortfolioContainer;
+

@@ -9,7 +9,9 @@ class StockContainer extends Component {
       <div>
         <h2>Stocks</h2>
       {this.props.stockArray.map(stock => 
-      <Stock key={stock.id} stock={stock}/>)}
+      <Stock key={stock.id} stock={stock}
+      handleClickPurchase={this.props.handleClickPurchase}
+      />)}
         
       </div>
     );

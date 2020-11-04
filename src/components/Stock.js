@@ -3,7 +3,8 @@ import React from 'react'
 const Stock = (props) => (
 
   <div>
-    <div className="card" onClick={(e) => {props.handleClick(props.stock)}}>
+    <div className="card" onClick={(e) => 
+      {props.handleClickPurchase(props.stock.id)}}>
       <div className="card-body">
         <h5 className="card-title">
             {props.stock.name}
